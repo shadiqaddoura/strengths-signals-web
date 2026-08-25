@@ -78,7 +78,7 @@ function ProgressMetric() {
   return (
     <section className="metric-card progress-metric">
       <div className="progress-ring" aria-label="60 percent of weekly workout goal complete">
-        {mounted ? <ResponsiveContainer width="100%" height="100%">
+        {mounted ? <ResponsiveContainer width="100%" height="100%" initialDimension={{ width: 74, height: 74 }}>
           <PieChart>
             <Pie data={ringData} dataKey="value" innerRadius={25} outerRadius={34} startAngle={90} endAngle={-270} stroke="none" fill="#9ece6a" isAnimationActive={false}>
               {ringData.map((_, index) => <Cell key={index} fill={index === 0 ? "#9ece6a" : "#292e42"} />)}
@@ -110,9 +110,6 @@ export default function DashboardPage() {
   const [isModalOpen, setModalOpen] = useState(false);
   const [workouts, setWorkouts] = useState<RecentWorkout[]>(initialRecentWorkouts);
   const [successMessage, setSuccessMessage] = useState("");
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
 
   const stats = useMemo(() => ({
     ...dashboardSnapshot,
@@ -178,7 +175,7 @@ export default function DashboardPage() {
             {activeNav !== "Dashboard" && <span className="view-pill">Previewing {activeNav}</span>}
           </div>
           <div className="chart-wrap" role="img" aria-label="Line chart showing Leg Press increasing from 70 to 90 kilograms, Chest Press from 50 to 70, and Lat Pulldown from 55 to 70">
-            {mounted ? <ResponsiveContainer width="100%" height="100%">
+            <ResponsiveContainer width="100%" height="100%" initialDimension={{ width: 1156, height: 385 }}>
               <LineChart data={progressSeries} margin={{ top: 18, right: 28, bottom: 4, left: -8 }}>
                 <CartesianGrid stroke="#292e42" strokeDasharray="5 6" vertical />
                 <XAxis dataKey="date" stroke="#565f89" tick={{ fill: "#c0caf5", fontSize: 13 }} axisLine={{ stroke: "#3b4261" }} tickLine={false} />
@@ -189,7 +186,7 @@ export default function DashboardPage() {
                 <Line name="Chest Press Machine" dataKey="chestPress" connectNulls stroke={chartColors.chestPress} strokeWidth={3} dot={{ r: 5, fill: chartColors.chestPress, strokeWidth: 0 }} activeDot={{ r: 7 }} />
                 <Line name="Lat Pulldown" dataKey="latPulldown" connectNulls stroke={chartColors.latPulldown} strokeWidth={3} dot={{ r: 5, fill: chartColors.latPulldown, strokeWidth: 0 }} activeDot={{ r: 7 }} />
               </LineChart>
-            </ResponsiveContainer> : <div className="chart-loading">Preparing progress chart…</div>}
+            </ResponsiveContainer>
           </div>
         </section>
 

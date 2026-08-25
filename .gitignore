@@ -28,3 +28,10 @@ pnpm-debug.log*
 
 # Vercel
 .vercel
+
+# Local browser capture artifacts
+.playwright-cli
+output/playwright
+
+# Next.js generated environment types (path differs between dev and build)
+next-env.d.ts
