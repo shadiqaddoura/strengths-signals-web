@@ -16,6 +16,12 @@
 
 Strength Signals turns workout history into a clear, calm dashboard for tracking consistency and safe strength progression. Version **0.1.0** is a frontend-only release powered by local mock data, with the structure prepared for a future database integration.
 
+## Dashboard Preview
+
+<p align="center">
+  <img src="./public/screenshots/dashboard.png" alt="Strength Signals workout dashboard in the Tokyo Night theme" width="1200" />
+</p>
+
 ## Features
 
 - Weekly workout-goal progress and monthly session totals
